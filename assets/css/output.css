@@ -99,18 +99,26 @@
     --radius-lg: 0.5rem;
     --radius-xl: 0.75rem;
     --radius-2xl: 1rem;
+    --ease-out: cubic-bezier(0, 0, 0.2, 1);
     --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
     --default-transition-duration: 150ms;
     --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
+    --color-primary-50: #f5f3ff;
+    --color-primary-100: #ede9fe;
+    --color-primary-200: #ddd6fe;
     --color-primary-300: #c4b5fd;
     --color-primary-400: #a78bfa;
     --color-primary-500: #8b5cf6;
     --color-primary-600: #7c3aed;
     --color-primary-700: #6d28d9;
+    --color-primary-800: #5b21b6;
+    --color-primary-900: #4c1d95;
     --font-display: Geist, system-ui, sans-serif;
     --font-body: Manrope, system-ui, sans-serif;
+    --animate-slide-in: slideIn 0.6s ease-out forwards;
+    --animate-fade-in: fadeIn 0.3s ease-out forwards;
   }
 }
 @layer base {
@@ -1313,6 +1321,10 @@
     --tw-ease: var(--ease-in-out);
     transition-timing-function: var(--ease-in-out);
   }
+  .ease-out {
+    --tw-ease: var(--ease-out);
+    transition-timing-function: var(--ease-out);
+  }
   .hover\:border-indigo-500 {
     &:hover {
       @media (hover: hover) {
@@ -2479,6 +2491,24 @@
 @property --tw-ease {
   syntax: "*";
   inherits: false;
+}
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 @layer properties {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
