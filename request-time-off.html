@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peoplia - Free Tailwind CSS HR & Employee Management Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap"  rel="stylesheet">
+    <link href="./assets/css/output.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.js"></script>
+</head>
+<body class="h-full bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+    <div class="flex h-screen">
+        <!-- Sidebar Overlay (for mobile) -->
+        <div id="sidebar-overlay" class=""></div>
+        <!-- Sophisticated Sidebar -->
+        <div id="sidebar" class="w-72 bg-white dark:bg-gray-800 shadow-premium border-r border-gray-200 dark:border-gray-700">
+            <div class="flex flex-col h-full">
+                <!-- Logo and Close Button Section -->
+                <div class="p-6 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center h-[85px]">
+                    <div>
+                        <a href="index.html" class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-gradient-to-br from-primary-600 to-primary-700 rounded-xl flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+                                    <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                                </svg>
+                            </div>
+                            <div class="logo-text">
+                                <h1 class="text-xl font-display font-bold text-gray-900 dark:text-white">Peoplia</h1>
+                                <p class="text-sm font-body text-gray-500 dark:text-gray-400">Smart HR Solutions</p>
+                            </div>
+                        </a>
+                    </div>
+                    <button id="sidebar-close"
+                        class="lg:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <i data-lucide="x" class="w-5 h-5 dark:text-gray-300"></i>
+                    </button>
+                </div>
+
+                <!-- Arrow For collapse span tag -->
+                 <div class="absolute top-[90px] -right-[15px] hidden lg:flex items-center space-x-1">
+                    <button id="sidebar-collapse-btn" class="arrow-button">
+                        <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g>
+                                <rect x="4" y="32" width="30" height="30" rx="15" transform="rotate(-90 4 32)" class="fill-white dark:fill-gray-800" />
+                                <path d="M21.5 10.75L14 17.625L21.5 24.5"  class="stroke-black dark:stroke-white" stroke-width="1.5"  stroke-linecap="round" stroke-linejoin="round" />
+                            </g>
+                        </svg>
+                    </button>
+                </div>
+
+               <!-- Navigation -->
+                <nav class="flex-1 overflow-y-auto  py-6 px-4 custom-scrollbar">
+                    <ul class="space-y-2">
+                        <li>
+                            <a href="index.html" class="nav-item relative flex items-center space-x-3 px-4 py-3 rounded-xl text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white font-medium transition-all duration-200">
+                                <i data-lucide="layout-dashboard" class="w-5 h-5"></i>
+                                <span class="nav-text">Dashboard</span>
+                            </a>
+                        </li>
+                         <li>
+                            <a href="employee.html" class="nav-item relative flex items-center space-x-3 px-4 py-3 rounded-xl text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white font-medium transition-all duration-200 tooltip">
+                                <i data-lucide="users" class="w-5 h-5"></i>
+                                <span class="nav-text">Employee</span>
+                            </a>
+                        </li>
+                         <li>
+                            <a href="attendance.html" class="nav-item relative flex items-center space-x-3 px-4 py-3 rounded-xl text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white font-medium transition-all duration-200 tooltip">
+                                <i data-lucide="clock-plus" class="w-5 h-5"></i>
+                                <span class="nav-text">Attendance</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="calendar.html" class="nav-item relative flex items-center space-x-3 px-4 py-3 rounded-xl text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white font-medium transition-all duration-200">
+                                <i data-lucide="calendar-days" class="w-5 h-5"></i>
+                                <span class="nav-text">Calendar</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="time-off.html" class="nav-item relative active flex items-center space-x-3 px-4 py-3 rounded-xl bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-900/30 dark:to-purple-900/30 text-purple-700 dark:text-primary-300 font-medium shadow-sm transition-all">
+                                <i data-lucide="timer" class="w-5 h-5"></i>
+                                <span class="nav-text">Time Off</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="project.html" class="nav-item relative flex items-center space-x-3 px-4 py-3 rounded-xl text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white font-medium transition-all duration-200">
+                               <i data-lucide="folder-kanban" class="w-5 h-5"></i>
+                                <span class="nav-text">Project</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="teams.html" class="nav-item relative flex items-center space-x-3 px-4 py-3 rounded-xl text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white font-medium transition-all duration-200">
+                               <i data-lucide="users" class="w-5 h-5"></i>
+                               <span class="nav-text">Teams</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="notes.html" class="nav-item relative flex items-center space-x-3 px-4 py-3 rounded-xl text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white font-medium transition-all duration-200">
+                                <i data-lucide="notebook-pen" class="w-5 h-5"></i>
+                                <span class="nav-text">Notes</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="benefits.html" class="nav-item relative flex items-center space-x-3 px-4 py-3 rounded-xl text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white font-medium transition-all duration-200">
+                                <i data-lucide="gift" class="w-5 h-5"></i>
+                                <span class="nav-text">Benefits</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="documents.html" class="nav-item relative flex items-center space-x-3 px-4 py-3 rounded-xl text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white font-medium transition-all duration-200">
+                               <i data-lucide="file" class="w-5 h-5"></i>
+                               <span class="nav-text">Document</span>
+                            </a>
+                        </li>
+                         <li>
+                            <button class="flex items-center justify-between w-full px-4 py-3 rounded-xl text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white font-medium transition-all duration-200 dropdown-toggle">
+                                <div class="flex items-center space-x-3">
+                                    <i data-lucide="list-filter" class="w-5 h-5"></i>
+                                    <span>Pages</span>
+                                </div>
+                                <i data-lucide="chevron-down" class="w-4 h-4 transition-transform duration-200"></i>
+                            </button>
+                            <ul class="mt-1 space-y-1 hidden">
+                                <li><a href="login.html" class="px-4 py-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white transition-all duration-200 flex items-center space-x-3"><i data-lucide="list-restart" class="w-5 h-5 text-gray-600 dark:text-gray-300"></i><span>Login</span></a></li>
+                                <li><a href="signup.html" class="px-4 py-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white transition-all duration-200 flex items-center space-x-3"><i data-lucide="circle" class="w-5 h-5 text-gray-600 dark:text-gray-300"></i><span>Signup</span></a></li>
+                                <li><a href="forgot-password.html" class="px-4 py-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white transition-all duration-200 flex items-center space-x-3"><i data-lucide="rotate-ccw" class="w-5 h-5 text-gray-600 dark:text-gray-300"></i><span>Forgot password</span></a></li>
+                                <li><a href="404.html" class="px-4 py-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white transition-all duration-200 flex items-center space-x-3"><i data-lucide="sticky-note" class="w-5 h-5 text-gray-600 dark:text-gray-300"></i><span>404 page</span></a></li>
+                                <li><a href="500.html" class="px-4 py-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white transition-all duration-200 flex items-center space-x-3"><i data-lucide="columns-2" class="w-5 h-5 text-gray-600 dark:text-gray-300"></i><span>500 page</span></a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 flex flex-col overflow-hidden">
+            <!-- Header -->
+            <header
+                class="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700 px-4 sm:px-6 flex items-center h-[85px]">
+                <div class="flex items-center justify-between flex-wrap gap-4 header-content w-full">
+                    <div class="flex items-center flex-1 min-w-0">
+                        <!-- Hamburger Menu Button (visible on mobile/tablet) -->
+                        <button id="sidebar-toggle"
+                            class="hamburger-btn mr-3 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <i data-lucide="menu" class="w-5 h-5 dark:text-gray-300"></i>
+                        </button>
+                        <div class="min-w-0">
+                            <div class="relative search-container hidden sm:block">
+                                <input type="text" placeholder="Search ..."
+                                    class="w-40 md:w-48 lg:w-80 px-4 py-2 pl-10 pr-4 border border-gray-200 dark:border-gray-600 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-transparent font-body bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none">
+                                <i data-lucide="search" class="w-4 h-4 text-gray-400 absolute left-3 top-3"></i>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-2 sm:space-x-3 header-actions flex-shrink-0">
+
+                        <button id="mobile-search-btn"
+                            class="sm:hidden p-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
+                            <i data-lucide="search" class="w-5 h-5"></i>
+                        </button>
+
+                        <!-- Theme toggle button -->
+                        <button id="theme-toggle"
+                            class="p-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
+                            <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+                            <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
+                        </button>
+
+                        <!-- Notification Dropdown -->
+                        <div class="relative">
+
+                            <button id="notification-btn"
+                                class="relative p-2 mr-2 text-gray-400 bg-gray-200 dark:bg-gray-900 rounded hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
+                                <i data-lucide="bell" class="w-5 h-5"></i>
+                                <span class="absolute top-1 right-1 w-3 h-3 bg-red-500 rounded-full"></span>
+                            </button>
+
+                            <!-- Notification Dropdown Menu -->
+                            <div id="notification-dropdown"
+                                class="hidden absolute right-0 mt-2 w-80 sm:w-96 bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 z-50 py-2 glass-effect">
+                                <div
+                                    class="px-4 py-2 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
+                                    <h3 class="font-display font-semibold text-gray-900 dark:text-white">Notifications
+                                    </h3>
+                                    <button
+                                        class="text-xs text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300 font-medium">Mark
+                                        all as read</button>
+                                </div>
+                                <div class="max-h-96 overflow-y-auto custom-scrollbar">
+                                    <div class="px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-700/50 cursor-pointer">
+                                        <div class="flex items-start space-x-3">
+                                            <div
+                                                class="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
+                                                <i data-lucide="calendar" class="w-5 h-5 text-white"></i>
+                                            </div>
+                                            <div class="flex-1 min-w-0">
+                                                <p class="text-sm font-medium text-gray-900 dark:text-white truncate">
+                                                    New appointment scheduled</p>
+                                                <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">John Smith
+                                                    booked an appointment for tomorrow at 10:00 AM</p>
+                                                <p class="text-xs text-gray-400 dark:text-gray-500 mt-1">2 minutes ago
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-700/50 cursor-pointer">
+                                        <div class="flex items-start space-x-3">
+                                            <div
+                                                class="w-10 h-10 bg-gradient-to-br from-red-500 to-red-600 rounded-full flex items-center justify-center flex-shrink-0">
+                                                <i data-lucide="alert-triangle" class="w-5 h-5 text-white"></i>
+                                            </div>
+                                            <div class="flex-1 min-w-0">
+                                                <p class="text-sm font-medium text-gray-900 dark:text-white truncate">
+                                                    Critical lab result</p>
+                                                <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Patient #2847
+                                                    has abnormal test results requiring review</p>
+                                                <p class="text-xs text-gray-400 dark:text-gray-500 mt-1">15 minutes ago
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-700/50 cursor-pointer">
+                                        <div class="flex items-start space-x-3">
+                                            <div
+                                                class="w-10 h-10 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center flex-shrink-0">
+                                                <i data-lucide="credit-card" class="w-5 h-5 text-white"></i>
+                                            </div>
+                                            <div class="flex-1 min-w-0">
+                                                <p class="text-sm font-medium text-gray-900 dark:text-white truncate">
+                                                    Payment received</p>
+                                                <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Invoice
+                                                    #INV-2024-0189 has been paid by Robert Johnson</p>
+                                                <p class="text-xs text-gray-400 dark:text-gray-500 mt-1">1 hour ago</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-700/50 cursor-pointer">
+                                        <div class="flex items-start space-x-3">
+                                            <div
+                                                class="w-10 h-10 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0">
+                                                <i data-lucide="message-square" class="w-5 h-5 text-white"></i>
+                                            </div>
+                                            <div class="flex-1 min-w-0">
+                                                <p class="text-sm font-medium text-gray-900 dark:text-white truncate">
+                                                    New message from patient</p>
+                                                <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Miller sent a
+                                                    new message regarding her prescription</p>
+                                                <p class="text-xs text-gray-400 dark:text-gray-500 mt-1">3 hours ago</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="px-4 py-2 border-t border-gray-200 dark:border-gray-700 text-center">
+                                    <a href="#"
+                                        class="text-sm text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300 font-medium">View
+                                        all notifications</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Settings Dropdown -->
+                        <div class="relative">
+                            <div id="settings-btn" class="flex items-center space-x-3 border rounded-xl px-3 py-1.5 w-fit 
+                                        bg-white text-gray-900 border-gray-200 
+                                        dark:bg-gray-800 dark:text-white dark:border-gray-700">
+                                <div class="flex items-center justify-center w-10 h-10 rounded-full border 
+                                        border-gray-300 dark:border-gray-600">
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        class="w-6 h-6 text-gray-700 dark:text-gray-300" fill="none" viewBox="0 0 24 24"
+                                        stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M12 14c-3.31 0-6 1.79-6 4v2h12v-2c0-2.21-2.69-4-6-4zM12 12a4 4 0 100-8 4 4 0 000 8z" />
+                                    </svg>
+                                </div>
+                                <div class="hidden sm:hidden md:block lg:block">
+                                    <h2 class="text-base font-semibold text-gray-900 dark:text-white">Saroj Choudhury
+                                    </h2>
+                                    <p class="text-sm text-gray-500 dark:text-gray-400">HR Manager</p>
+                                </div>
+                            </div>
+                            <!-- Settings Dropdown Menu -->
+                            <div id="settings-dropdown"
+                                class="hidden absolute right-0 mt-2 w-64 bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 z-50 py-2 glass-effect">
+                                <div class="px-4 py-2 border-b border-gray-200 dark:border-gray-700">
+                                    <h3 class="font-display font-semibold text-gray-900 dark:text-white">Settings</h3>
+                                </div>
+                                <div class="py-2">
+                                    <a href="#"
+                                        class="flex items-center px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50">
+                                        <i data-lucide="user" class="w-4 h-4 mr-3"></i>
+                                        Profile Settings
+                                    </a>
+                                    <a href="#"
+                                        class="flex items-center px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50">
+                                        <i data-lucide="bell" class="w-4 h-4 mr-3"></i>
+                                        Notifications
+                                    </a>
+                                    <a href="#"
+                                        class="flex items-center px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50">
+                                        <i data-lucide="shield" class="w-4 h-4 mr-3"></i>
+                                        Privacy & Security
+                                    </a>
+                                    <a href="#"
+                                        class="flex items-center px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50">
+                                        <i data-lucide="credit-card" class="w-4 h-4 mr-3"></i>
+                                        Billing
+                                    </a>
+                                </div>
+                                <div class="px-4 py-2 border-t border-gray-200 dark:border-gray-700">
+                                    <button
+                                        class="w-full flex items-center justify-center px-4 py-2 bg-gray-50 dark:bg-gray-700/50 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 text-sm font-medium rounded-lg transition-colors">
+                                        <i data-lucide="log-out" class="w-4 h-4 mr-2"></i>
+                                        Sign out
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile Search Bar (hidden by default) -->
+                <div id="mobile-search-container" class="hidden bg-white absolute left-0 w-full right-0 px-4 pb-2 top-[75px] z-20">
+                    <div class="relative">
+                        <input type="search" placeholder="Search..."
+                            class="w-full px-4 py-2 pl-10 pr-4 border border-gray-200 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent font-body bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none">
+                        <i data-lucide="search" class="w-4 h-4 text-gray-400 absolute left-3 top-3"></i>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Main -->
+
+            <main class="flex-1 overflow-auto p-6 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+                <div class="max-w-4xl mx-auto">
+                    <!-- Leave Balance Summary -->
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+                    <!-- Annual Leave -->
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-4 border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition">
+                        <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Annual Leave</p>
+                            <p class="text-2xl font-bold">15</p>
+                            <p class="text-xs text-gray-400 dark:text-gray-500">days remaining</p>
+                        </div>
+                        <div class="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center">
+                            <svg class="w-5 h-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/>
+                            </svg>
+                        </div>
+                        </div>
+                    </div>
+                    <!-- Sick Leave -->
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-4 border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition">
+                        <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Sick Leave</p>
+                            <p class="text-2xl font-bold">8</p>
+                            <p class="text-xs text-gray-400 dark:text-gray-500">days remaining</p>
+                        </div>
+                        <div class="w-10 h-10 bg-red-500/20 rounded-lg flex items-center justify-center">
+                            <svg class="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h4a1 1 0 010 2H6.414l2.293 2.293a1 1 0 01-1.414 1.414L5 6.414V8a1 1 0 01-2 0V4zm9 1a1 1 0 010-2h4a1 1 0 011 1v4a1 1 0 01-2 0V6.414l-2.293 2.293a1 1 0 11-1.414-1.414L13.586 5H12zm-9 7a1 1 0 012 0v1.586l2.293-2.293a1 1 0 111.414 1.414L6.414 15H8a1 1 0 010 2H4a1 1 0 01-1-1v-4zm13-1a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 010-2h1.586l-2.293-2.293a1 1 0 111.414-1.414L15.586 13H14a1 1 0 01-1-1z" clip-rule="evenodd"/>
+                            </svg>
+                        </div>
+                        </div>
+                    </div>
+                    <!-- Personal Leave -->
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-4 border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition">
+                        <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Personal Leave</p>
+                            <p class="text-2xl font-bold">5</p>
+                            <p class="text-xs text-gray-400 dark:text-gray-500">days remaining</p>
+                        </div>
+                        <div class="w-10 h-10 bg-green-500/20 rounded-lg flex items-center justify-center">
+                            <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"/>
+                            </svg>
+                        </div>
+                        </div>
+                    </div>
+                    <!-- Comp Time -->
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-4 border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition">
+                        <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Comp Time</p>
+                            <p class="text-2xl font-bold">3</p>
+                            <p class="text-xs text-gray-400 dark:text-gray-500">days remaining</p>
+                        </div>
+                        <div class="w-10 h-10 bg-purple-500/20 rounded-lg flex items-center justify-center">
+                            <svg class="w-5 h-5 text-purple-500" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
+                            </svg>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+
+                    <!-- Request Form -->
+                    <div class="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm">
+                    <form class="space-y-6">
+                        <!-- Leave Type & Duration -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Leave Type *</label>
+                            <select class="w-full bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                            <option>Annual Leave</option>
+                            <option>Sick Leave</option>
+                            <option>Personal Leave</option>
+                            <option>Maternity/Paternity Leave</option>
+                            <option>Bereavement Leave</option>
+                            <option>Comp Time</option>
+                            <option>Unpaid Leave</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Duration Type *</label>
+                            <select class="w-full bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                            <option>Full Day</option>
+                            <option>Half Day - Morning</option>
+                            <option>Half Day - Afternoon</option>
+                            <option>Custom Hours</option>
+                            </select>
+                        </div>
+                        </div>
+
+                        <!-- Date Range -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Start Date *</label>
+                            <input type="date" class="w-full bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">End Date *</label>
+                            <input type="date" class="w-full bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        </div>
+                        </div>
+
+                        <!-- Custom Hours (hidden default) -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 hidden" id="customHours">
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Start Time</label>
+                            <input type="time" class="w-full bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">End Time</label>
+                            <input type="time" class="w-full bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        </div>
+                        </div>
+
+                        <!-- Total Days -->
+                        <div class="bg-gray-50 dark:bg-gray-900 rounded-lg p-4 border border-gray-300 dark:border-gray-700">
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-gray-500 dark:text-gray-400">Total Days Requested:</span>
+                            <span class="text-lg font-semibold text-indigo-600 dark:text-indigo-400">3 days</span>
+                        </div>
+                        <div class="flex items-center justify-between mt-2">
+                            <span class="text-sm text-gray-500 dark:text-gray-400">Remaining Balance After Request:</span>
+                            <span class="text-sm font-medium">12 days</span>
+                        </div>
+                        </div>
+
+                        <!-- Reason -->
+                        <div>
+                        <label class="block text-sm font-medium mb-2">Reason for Leave *</label>
+                        <textarea rows="4" class="w-full bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Please provide a brief reason"></textarea>
+                        </div>
+
+                        <!-- Work Coverage -->
+                        <div>
+                        <label class="block text-sm font-medium mb-2">Work Coverage Plan</label>
+                        <textarea rows="3" class="w-full bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="How will your work be covered?"></textarea>
+                        </div>
+
+                        <!-- Emergency Contact -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Emergency Contact Name</label>
+                            <input type="text" class="w-full bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Contact person">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Emergency Contact Phone</label>
+                            <input type="tel" class="w-full bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Phone number">
+                        </div>
+                        </div>
+
+                        <!-- Checkboxes -->
+                        <div class="space-y-3">
+                        <label class="flex items-center space-x-3 text-sm">
+                            <input type="checkbox" class="rounded border-gray-300 dark:border-gray-600 text-indigo-600 focus:ring-indigo-500">
+                            <span>I will be available for urgent matters via phone/email</span>
+                        </label>
+                        <label class="flex items-center space-x-3 text-sm">
+                            <input type="checkbox" class="rounded border-gray-300 dark:border-gray-600 text-indigo-600 focus:ring-indigo-500">
+                            <span>This is a recurring leave request</span>
+                        </label>
+                        </div>
+
+                        <!-- File Upload -->
+                        <div>
+                        <label class="block text-sm font-medium mb-2">Supporting Documents (optional)</label>
+                        <div class="border-2 border-dashed border-gray-300 dark:border-gray-700 rounded-lg p-6 text-center cursor-pointer">
+                            <svg class="w-12 h-12 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 48 48">
+                            <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <p class="text-gray-500 dark:text-gray-400">Drop files here or click to upload</p>
+                            <p class="text-xs text-gray-400">PDF, DOC, JPG up to 10MB</p>
+                            <input type="file" class="hidden" multiple>
+                        </div>
+                        </div>
+
+                        <!-- Buttons -->
+                        <div class="flex items-center justify-end space-x-4 pt-6 border-t border-gray-200 dark:border-gray-700">
+                        <button type="button" class="px-6 py-2 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition">
+                            Cancel
+                        </button>
+                        <button type="button" class="px-6 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition">
+                            Save as Draft
+                        </button>
+                        <button type="submit" class="px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition">
+                            Submit Request
+                        </button>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+            </main>
+
+
+            <!-- Footer -->
+           <footer>
+                <div class="px-4 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 flex justify-center items-center h-16">
+                    <p class="text-sm font-body text-gray-500 dark:text-gray-400 flex flex-wrap sm:gap-2 justify-center items-center text-center">
+                    <span>Copyright © 2025. All Rights Reserved.</span>
+                    <a href="https://www.templaterise.com/" class="text-purple-700" target="_blank">Themes By TemplateRise</a>
+                    </p>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <script src="assets/js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebar = document.getElementById('sidebar');
+            const collapseBtn = document.getElementById('sidebar-collapse-btn');
+            // Check if there's a saved state in localStorage
+            const isCollapsed = localStorage.getItem('sidebarCollapsed') === 'true';
+            
+            // Apply the saved state
+            if (isCollapsed) {
+                sidebar.classList.add('sidebar-collapsed');
+            }
+            // Toggle sidebar collapse
+            collapseBtn.addEventListener('click', function() {
+                sidebar.classList.toggle('sidebar-collapsed');
+                // Save the state to localStorage
+                const isNowCollapsed = sidebar.classList.contains('sidebar-collapsed');
+                localStorage.setItem('sidebarCollapsed', isNowCollapsed);
+            });
+        });
+    </script>
+</body>
+</html>
