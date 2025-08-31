@@ -158,3 +158,93 @@ Url                  : https://www.templaterise.com/template/curapanel-free-tail
 .sidebar-collapsed .nav-item .nav-text {
   display: none;
 }
+
+.fc {
+  border-radius: .5rem;
+  padding: 1rem;
+  background-color: #ffffff; /* bg-white */
+  color: #111827; /* text-gray-900 */
+}
+
+.dark .fc {
+  background-color: #1f2937; /* dark:bg-gray-800 */
+  color: #f3f4f6; /* dark:text-gray-100 */
+
+}
+
+.fc-col-header-cell, .fc-timegrid-axis {
+    background-color: #f9fafb; /* bg-gray-50 */
+}
+
+.dark  .fc-col-header-cell, .dark .fc-timegrid-axis {
+    background-color: #374151; /* dark:bg-gray-700 */
+}
+
+.fc .fc-toolbar-title {
+  font-size: 1.125rem; /* text-lg */
+  font-weight: 600; /* font-semibold */
+  color: #111827; /* text-gray-900 */
+}
+
+.fc .fc-button {
+  background-color: #f3f4f6; /* bg-gray-100 */
+  color: #374151; /* text-gray-700 */
+  border: 1px solid #d1d5db; /* border-gray-300 */
+  border-radius: 0.375rem; /* rounded-md */
+  padding: 0.25rem 0.5rem; /* px-2 py-1 */
+}
+
+.fc .fc-button:hover {
+  background-color: #e5e7eb; /* hover:bg-gray-200 */
+}
+
+.fc .fc-daygrid-day-number {
+  font-size: 0.875rem; /* text-sm */
+  color: #4b5563; /* text-gray-600 */
+}
+
+.fc .fc-daygrid-event {
+  border-radius: 0.375rem; /* rounded-md */
+  padding: 0.125rem 0.5rem; /* px-2 py-0.5 */
+  font-size: 0.75rem; /* text-xs */
+  font-weight: 500; /* font-medium */
+}
+
+.fc .fc-col-header-cell-cushion {
+  color: #374151; /* text-gray-700 */
+}
+
+.fc .fc-daygrid-day.fc-day-today {
+  background-color: #e0e7ff; /* bg-indigo-100 */
+}
+
+/* Dark Mode */
+.dark .fc .fc-toolbar-title {
+  color: #f3f4f6; /* dark:text-gray-100 */
+}
+
+.dark .fc .fc-button {
+  background-color: #374151; /* dark:bg-gray-700 */
+  color: #e5e7eb; /* dark:text-gray-200 */
+  border-color: #4b5563; /* dark:border-gray-600 */
+}
+
+.dark .fc .fc-button:hover {
+  background-color: #4b5563; /* dark:hover:bg-gray-600 */
+}
+
+.dark .fc .fc-daygrid-day-number {
+  color: #d1d5db; /* dark:text-gray-300 */
+}
+
+.dark .fc .fc-col-header-cell-cushion {
+  color: #d1d5db; /* dark:text-gray-300 */
+}
+
+.dark .fc .fc-daygrid-day.fc-day-today {
+  background-color: rgba(79, 70, 229, 0.4); /* dark:bg-indigo-900/40 */
+}
+
+.dark .fc-theme-standard td, .dark .fc-theme-standard th, .dark .fc-theme-standard .fc-scrollgrid {
+    border: 1px solid #364153;
+}
